@@ -24,8 +24,7 @@ from django.urls import path, include
 from core.views import index, contact
 
 urlpatterns = [
-    path('', index, name='index'), # first view index here
+    path('', include('core.urls')), # this will loop through all of the paths of urls.py first before the paths below
     path('items/', include('item.urls')), # imports that additional `urls.py` file we created in the `.item` folder
-    path('contact/', contact, name='contact'),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
