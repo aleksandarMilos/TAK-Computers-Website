@@ -26,3 +26,4 @@ class SignupForm(UserCreationForm):
         'placeholder': 'Repeat password',
         'class': 'w-full py-4 px-6 rounded-xl'
     }))
+
