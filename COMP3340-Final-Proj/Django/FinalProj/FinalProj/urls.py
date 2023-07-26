@@ -18,13 +18,14 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 # Importing the views we created
 from core.views import index, contact
 
 urlpatterns = [
     path('', index, name='index'), # first view index here
+    path('items/', include('item.urls')), # imports that additional `urls.py` file we created in the `.item` folder
     path('contact/', contact, name='contact'),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
