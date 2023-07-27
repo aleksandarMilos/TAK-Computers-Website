@@ -1,10 +1,29 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import NewItemForm, EditItemForm
-from .models import Item
+from .models import Category, Item
 
-# Create your views here.
+# This view is for the "Browse" page 
+def browse(request):
+    query = request.GET.get('query', '') #Backend query part
+    category_id = request.GET.get('category', 0) #defaulted to 0, aka no category selected
+    categories = Category.objects.all()
+    items = Item.objects.filter(is_sold=False) #Once again maybe remove if we don't care about is_sold
+
+    if category_id: # user selected a category
+        items = items.filter(category_id=category_id) #then display the items of that specific category
+
+    if query: #Aka the user has filled it out
+        items = items.filter(Q(name__icontains=query) | Q(description__icontains=query)) #If name or description contains the queried thing, case insensitive
+
+    return render(request, 'item/browse.html', {
+        'items':items,
+        'query': query,
+        'categories': categories,
+        'category_id': int(category_id)
+    })
 
 # This view is for creating the details page for the item
 def detail(request, pk): #pk stands for primary key
@@ -15,7 +34,6 @@ def detail(request, pk): #pk stands for primary key
         'item': item,
         'related_items': related_items
     })
-
 
 #Making it a requirement that we have to be logged in first, in order to add items, if not logged in and we try to add an item, redirected to login page instead
 @login_required
