@@ -1,13 +1,13 @@
 {% extends 'core/base.html' %} <!-- as mentioned, uses the base.html as the template for these pages -->
 
 <!-- This block also transferred to base.html as the title block-->
-{% block title %}TAK Computers Front Page{% endblock %}
+{% block title %}Dashboard{% endblock %} <!-- TODO figure out how to put the user's name in front of 'Dashboard'-->
 
 <!-- This block gets automatically rendered in the corresponding base.html part -->
 <!-- Available Items Portion of the Front Page -->
 {% block content %}
     <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-        <h2 class="mb-12 text-3xl text-center font-semibold">Available items</h2>
+        <h2 class="mb-12 text-3xl text-center font-semibold">My items</h2>
 
         <div class="grid grid-cols-3 gap-3"> <!-- This part is for showing the items -->
             {% for item in items %}
@@ -20,28 +20,6 @@
                         <div class="p-6 bg-white rounded-b-xl">
                             <h2 class="text-2xl"><strong>{{ item.name }}</strong></h2>
                             <p class="text-gray-700">Price: ${{ item.price | floatformat:2 }}</p>
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    <!-- Computer Categories of Front Page -->
-    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-        <h2 class="mb-12 text-3xl text-center font-semibold">Computer Categories</h2>
-
-        <div class="grid grid-cols-3 gap-3">
-            {% for category in categories %}
-                <div>
-                    <a href="#">
-                        <div class="p-6 bg-white rounded-b-xl">
-                            <h2 class="text-2xl">{{ category.name }}</h2>
-                            {% if category.items.count == 1 %}
-                                <p class="text-gray-500">{{ category.items.count}} item available</p>
-                            {% else %}
-                                <p class="text-gray-500">{{ category.items.count}} items available</p>
-                            {% endif %}
                         </div>
                     </a>
                 </div>
