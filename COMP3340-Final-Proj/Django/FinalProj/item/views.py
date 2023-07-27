@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import NewItemForm
+from .forms import NewItemForm, EditItemForm
 from .models import Item
 
 # Create your views here.
@@ -34,5 +34,32 @@ def new(request):
 
     return render(request, 'item/form.html', {
         'form': form,
-        'title': 'New Item', #for forms.html
+        'title': 'Add New Item', #for forms.html
+    })
+
+#This is for deleting items
+@login_required
+def delete(request, pk):
+    item = get_object_or_404(Item, pk=pk, created_by=request.user)
+    item.delete()
+
+    return redirect('dashboard:index') #after deleting return to dashboard
+
+# This is for editting items, similar to new() above, but adjusted slightly
+def edit(request, pk):
+    item = get_object_or_404(Item, pk=pk, created_by=request.user)
+
+    if request.method == 'POST': #this is if the form is submitted
+        form = EditItemForm(request.POST, request.FILES, instance=item)
+
+        if form.is_valid():
+            form.save() #This is adjusted to be simply as we know for sure it's already created, so we simply need to save() now
+
+            return redirect('item:detail', pk=item.id)
+    else: #Aka if its a get request
+        form = EditItemForm(instance=item)
+
+    return render(request, 'item/form.html', {
+        'form': form,
+        'title': 'Edit Item', 
     })

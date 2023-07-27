@@ -26,5 +26,6 @@ from core.views import index, contact
 urlpatterns = [
     path('', include('core.urls')), # this will loop through all of the paths of urls.py first before the paths below
     path('items/', include('item.urls')), # imports that additional `urls.py` file we created in the `.item` folder
+    path('dashboard/', include('dashboard.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
