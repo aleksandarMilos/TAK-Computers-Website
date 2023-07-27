@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#This is so that the default Django login does not redirect to a non-existant page
+LOGIN_URL ='/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL ='/' #Login and logout sent to front page
+
 
 # Application definition
 

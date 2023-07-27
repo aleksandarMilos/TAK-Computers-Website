@@ -1,14 +1,13 @@
-{% extends 'core/base.html' %}
-
-<!-- Write your comments here -->
+{% extends 'core/base.html' %} <!-- as mentioned, uses the base.html as the template for these pages -->
 
 <!-- This block also transferred to base.html as the title block-->
 {% block title %}COMP3340 | Front Page{% endblock %}
 
 <!-- This block gets automatically rendered in the corresponding base.html part -->
+<!-- Available Items Portion of the Front Page -->
 {% block content %}
     <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-        <h2 class="mb-12 text-2xl text-center">Available items</h2>
+        <h2 class="mb-12 text-3xl text-center font-semibold">Available items</h2>
 
         <div class="grid grid-cols-3 gap-3"> <!-- This part is for showing the items -->
             {% for item in items %}
@@ -20,7 +19,7 @@
 
                         <div class="p-6 bg-white rounded-b-xl">
                             <h2 class="text-2xl"><strong>{{ item.name }}</strong></h2>
-                            <p class="text-gray-700">Price: {{ item.price | floatformat:2 }}</p>
+                            <p class="text-gray-700">Price: ${{ item.price | floatformat:2 }}</p>
                         </div>
                     </a>
                 </div>
@@ -28,8 +27,9 @@
         </div>
     </div>
 
+    <!-- Computer Categories of Front Page -->
     <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-        <h2 class="mb-12 text-2xl text-center">Computer Categories</h2>
+        <h2 class="mb-12 text-3xl text-center font-semibold">Computer Categories</h2>
 
         <div class="grid grid-cols-3 gap-3">
             {% for category in categories %}

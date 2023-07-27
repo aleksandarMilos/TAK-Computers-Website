@@ -1,10 +1,10 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Sign Up User{% endblock %}
+{% block title %}Login User{% endblock %}
 
 {% block content %}
 <div class="w-1/2 my-6 p-6 mx-auto bg-gray-100 rounded-xl"> <!-- This is the signup space page here (w-1/2 half the page), mx-auto is centered on the screen, p-6 is padding -->
-    <h1 class="mb-6 text-3xl"><strong>Sign Up</strong></h1>
+    <h1 class="mb-6 text-3xl"><strong>Login User</strong></h1>
 
     <form method="post" action="."> <!-- The form we want, and action="." simply means same page we're on -->
         {% csrf_token %} <!-- Security built in with Django -->
@@ -15,18 +15,8 @@
         </div>
 
         <div class="mb-3">
-            <label class="inline-block mb-2">Email</label><br>
-            {{ form.email }}
-        </div>
-
-        <div class="mb-3">
             <label class="inline-block mb-2">Password</label><br>
-            {{ form.password1 }}
-        </div>
-
-        <div class="mb-3">
-            <label class="inline-block mb-2">Verify Password</label><br>
-            {{ form.password2 }}
+            {{ form.password }}
         </div>
 
         {% if form.errors or form.non_field_errors %}
