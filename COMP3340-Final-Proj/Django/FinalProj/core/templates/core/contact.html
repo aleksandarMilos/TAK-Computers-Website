@@ -1,11 +1,28 @@
 {% extends 'core/base.html' %}
 
-<!-- Write your comments here -->
-
 <!-- This block also transferred to base.html as the title block-->
 {% block title %}Contact{% endblock %}
 
 <!-- This block gets automatically rendered in the corresponding base.html part -->
 {% block content %}
-    <h1>The Contact Page</h1>
+    <h1 class="mb-12 text-3xl font-bold">Contact Us!</h1>
+    <div class="grid grid-cols-3 gap-3"> 
+        <div class="image-container">
+            <p><img src="/media/item_images/cropped_prof_pic.png" alt="Picture of Thomson Ly" width="250" height="250"></p>
+            <h3><strong>Thomson Ly</strong></h4>
+            <h4>lyt@uwindsor.ca | 519-988-9763</h4>
+        </div>
+        
+        <div class="image-container">
+            <p><img src="/media/item_images/AleksPic.png" alt="Picture of Aleksandar Milosevski" width="250" height="250"></p>
+            <h3><strong>Aleksandar Milosevski</strong></h4>
+            <h4>milosev2@uwindsor.ca | 226-344-6497</h4>
+        </div>
+
+        <div class="image-container">
+            <p><img src="/media/item_images/KellenPic.png" alt="Picture of Kellen Leclair" width="250" height="250"></p>
+            <h3><strong>Kellen Leclair</strong></h4>
+            <h4>leclair6@uwindsor.ca | 226-346-9432</h4>
+        </div>
+    </div>
 {% endblock %}

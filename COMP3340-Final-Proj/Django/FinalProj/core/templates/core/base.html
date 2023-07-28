@@ -1,4 +1,7 @@
+{% load static %}
+
 <!DOCTYPE html>
+<html lang="en">
 <!-- For Kellen/Alex, basically this base.html serves as the template for all the pages that we create, if you look at contact.html, base.html, they "extend" this
     base.html file
     Can adjust the colors like teal gray or smth I guess when we get to it
@@ -12,28 +15,30 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
-
         <title>{% block title%} {% endblock %}</title>
+        
+        
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
     </head>
 
     <body>
         <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-200">
             <div class="flex items-center space-x-1">
                 <a href="/"><img src="/media/item_images/TAK-logos_black.png" alt="Logo" class="logo" width="100" height="100"></a>
-                <a href="/" class="text-3xl font-extrabold">TAK Computers</a> <!-- Adjust this font here to make it fancy as the website title, TAK is an acronym for our names :) -->
+                <a href="/" class="text-4xl font-extrabold">TAK Computers</a> <!-- Adjust this font here to make it fancy as the website title, TAK is an acronym for our names :) -->
             </div>
 
             <!-- This div is for items on the right side of the Top Title of the page space-x-6 adds space between each item in this div -->
             <div class="space-x-6">
-                <a href="{% url 'item:new' %}" class="text-lg font-semibold hover:text-gray-500">Add New Item</a> <!-- see the "hover" changes the color of the item to gray-500 if we hover it -->
-                <a href="{% url 'item:browse' %}" class="text-lg font-semibold hover:text-gray-500">Browse</a> 
+                <a href="{% url 'item:new' %}" class="text-2xl font-semibold hover:text-gray-500">Add New Item</a> <!-- see the "hover" changes the color of the item to gray-500 if we hover it -->
+                <a href="{% url 'item:browse' %}" class="text-2xl  font-semibold hover:text-gray-500">Browse</a> 
                 
                 {% if request.user.is_authenticated %} <!-- So we don't show the signup/login button when we're actually authenticated and logged in -->
-                    <a href="{% url 'dashboard:index' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a> <!-- Consider renaming/remaking these two categories, for sure we need Shopping Cart -->
-                    <a href="{% url 'core:logout' %}" class="px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-teal-700">Logout</a> 
+                    <a href="{% url 'dashboard:index' %}" class="px-6 py-3 text-2xl font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a> <!-- Consider renaming/remaking these two categories, for sure we need Shopping Cart -->
+                    <a href="{% url 'core:logout' %}" class="px-6 py-3 text-2xl font-semibold bg-red-500 text-white rounded-xl hover:bg-teal-700">Logout</a> 
                 {% else %}
-                    <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign up</a> 
-                    <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Login</a> 
+                    <a href="{% url 'core:signup' %}" class="px-6 py-3 text-2xl font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign up</a> 
+                    <a href="{% url 'core:login' %}" class="px-6 py-3 text-2xl font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Login</a> 
                 {% endif %}
             </div>
         </nav>
@@ -68,9 +73,9 @@
                 <h3 class="mb-5 font-semibold text-gray-400">Menu</h3>
 
                 <ul class="space-y-2"> <!-- Adjust this list for the different pages we make! -->
-                    <li><a href="/" class="text-lg text-teal-500 hover:text-teal-700">Front Page (Available Items)</a></li>
-                    <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">About</a></li>
-                    <li><a href="{% url 'core:contact' %}" class="text-lg text-teal-500 hover:text-teal-700">Contact</a></li> <!-- the % % will bring you to that url we designed -->
+                    <li><a href="/" class="text-lg text-teal-500 hover:text-teal-700">Front Page</a></li>
+                    <li><a href="{% url 'core:about' %}" class="text-lg text-teal-500 hover:text-teal-700">About TAK Computers</a></li>
+                    <li><a href="{% url 'core:contact' %}" class="text-lg text-teal-500 hover:text-teal-700">Contact Us</a></li> <!-- the % % will bring you to that url we designed -->
                     <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Privacy Policy</a></li>
                     <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Terms of Use</a></li>
                 </ul>

@@ -1,0 +1,12 @@
+.image-container {
+    text-align: center; /* Horizontally center inline elements */
+}
+
+.image-container img {
+    display: block; /* Set the image to a block element */
+    margin: 0 auto; /* Automatically center the block element (the image) horizontally */
+}
+
+.image-container h3 {
+    font-size: 1.7em;
+}

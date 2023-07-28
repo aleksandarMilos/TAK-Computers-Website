@@ -17,6 +17,9 @@ def index(request):
 def contact(request):
     return render(request, 'core/contact.html')
 
+def about(request):
+    return render(request, 'core/about.html')
+
 def signup(request):
     if request.method == 'POST': #we know then that the form has been submitted
         form = SignupForm(request.POST) #gets all the information from the form
