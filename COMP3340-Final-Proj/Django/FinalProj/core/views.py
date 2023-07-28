@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
-
+from django.contrib.auth import authenticate, logout
 from item.models import Category, Item
+from django.contrib import messages
 
 from .forms import SignupForm #this is from the forms.py SignupForm we created
 
 # Creating our first view
 def index(request):
-    items = Item.objects.filter(is_sold=False)[0:6] #Obviously adjust this if we're not using the is_sold thing
+    items = Item.objects.filter(is_sold=False)[0:9] #Obviously adjust this if we're not using the is_sold thing
     categories = Category.objects.all()
     return render(request, 'core/index.html', {
         'categories': categories,
@@ -30,3 +31,8 @@ def signup(request):
     return render(request, 'core/signup.html',{
         'form': form
     })
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, ("You were successfully logged out!"))
+    return redirect('/')
