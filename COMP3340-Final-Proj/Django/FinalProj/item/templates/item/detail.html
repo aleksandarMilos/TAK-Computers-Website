@@ -17,7 +17,7 @@
         {% if item.description %}
             <p class="text-gray-700">
                 <strong class="text-gray-700">Description:</strong><br>
-                {{ item.description }}
+                {{ item.description | linebreaks }}
             </p>
 
         {% else %}
