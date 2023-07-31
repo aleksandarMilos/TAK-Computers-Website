@@ -25,7 +25,7 @@
         <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-200">
             <div class="flex items-center space-x-1">
                 <a href="/"><img src="/media/item_images/TAK-logos_black.png" alt="Logo" class="logo" width="100" height="100"></a>
-                <a href="/" class="text-4xl font-extrabold">TAK Computers</a> <!-- Adjust this font here to make it fancy as the website title, TAK is an acronym for our names :) -->
+                <a href="/" class="text-4xl font-extrabold" style="font-family: Verdana, sans-serif">TAK Computers</a> <!-- Adjust this font here to make it fancy as the website title, TAK is an acronym for our names :) -->
             </div>
 
             <!-- This div is for items on the right side of the Top Title of the page space-x-6 adds space between each item in this div -->
@@ -65,19 +65,19 @@
 
         <footer class="py-6 px-6 flex justify-between bg-gray-900">
             <div class="w-2/3 pr-10"> <!-- The w-2/3 is taking up 2/3rds of the thing or smth  -->
-                <h3 class="mb-5 font-semibold text-gray-400">About</h3>
+                <h3 class="mb-4 font-semibold text-gray-400">About</h3>
 
-                <p class="text-lg text-gray-300">Sample text here describing the website</p>
+                <p class="text-lg text-gray-300">Based in Windsor, Ontario, our inventory management website is designed to efficiently meet the high demands of our business.</p>
             </div>
 
             <div class="w-1/3"> <!-- This is taking up only 1/3rd of the thing -->
-                <h3 class="mb-5 font-semibold text-gray-400">Menu</h3>
+                <h3 class="mb-4 font-semibold text-gray-400">Menu</h3>
 
                 <ul class="space-y-2"> <!-- Adjust this list for the different pages we make! -->
                     <li><a href="/" class="text-lg text-teal-500 hover:text-teal-700">Front Page</a></li>
                     <li><a href="{% url 'core:about' %}" class="text-lg text-teal-500 hover:text-teal-700">About TAK Computers</a></li>
                     <li><a href="{% url 'core:contact' %}" class="text-lg text-teal-500 hover:text-teal-700">Contact Us</a></li> <!-- the % % will bring you to that url we designed -->
-                    <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Privacy Policy</a></li>
+                    <li><a href="{%url 'core:privacy' %}" class="text-lg text-teal-500 hover:text-teal-700">Privacy Policy</a></li>
                     <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Terms of Use</a></li>
                 </ul>
             </div>

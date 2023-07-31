@@ -21,6 +21,10 @@ def contact(request):
 def about(request):
     return render(request, 'core/about.html')
 
+def privacy(request):
+    return render(request, 'core/privacy.html')
+
+
 def signup(request):
     if request.method == 'POST': #we know then that the form has been submitted
         form = SignupForm(request.POST) #gets all the information from the form
