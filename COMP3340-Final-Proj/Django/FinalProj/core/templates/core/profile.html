@@ -1,0 +1,52 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{user.username}}'s Profile{% endblock %}
+ 
+{% block content %}
+    <div class="row my-4">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-info font-semibold text-white text-3xl">
+                    User Profile Page
+                </div>
+                <div class="row p-3">
+                    <div class="col-md-7">
+                        <table class="table table-borderless">
+                            <thead>
+                                <span class="h4 text-2xl">Profile Information</span class="h4">
+                                <a class="px-6 py-1 btn btn-info btn-sm float-right text-xl" href="{% url 'core:profile-update' %}">Edit</a>
+                                <hr class="mt-2">
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="text-xl">Name</th>
+                                    <td class="text-xl">{{ user.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-xl">Email</th>
+                                    <td class="text-xl">{{ user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-xl">Address</th>
+                                    <td class="text-xl">{{ user.profile.address }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-xl">Phone</th>
+                                    <td class="text-xl">{{ user.profile.phone }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="profilepic col-md-4">
+                        {% if user.profile.image %}
+                            <img class="profilepic" src="{{ user.profile.image.url }}" alt="profile-image">
+                        {% else %}
+                            <img class="profilepic" src="/media/Profile_Images/DefaultProfPic.jpg" alt="profile-image">
+                        {% endif %}         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
