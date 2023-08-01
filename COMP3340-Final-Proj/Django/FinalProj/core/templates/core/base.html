@@ -35,7 +35,8 @@
                 
                 {% if request.user.is_authenticated %} <!-- So we don't show the signup/login button when we're actually authenticated and logged in -->
                     <a href="{% url 'dashboard:index' %}" class="px-6 py-3 text-2xl font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a> <!-- Consider renaming/remaking these two categories, for sure we need Shopping Cart -->
-                    <a href="{% url 'core:logout' %}" class="px-6 py-3 text-2xl font-semibold bg-red-500 text-white rounded-xl hover:bg-teal-700">Logout</a> 
+                    <a href="{% url 'core:profile' %}" class="px-6 py-3 text-2xl font-semibold bg-blue-500 text-white rounded-xl hover:bg-blue-700">Profile</a>
+                    <a href="{% url 'core:logout' %}" class="px-6 py-3 text-2xl font-semibold bg-red-500 text-white rounded-xl hover:bg-teal-700">Logout</a>  
                 {% else %}
                     <a href="{% url 'core:signup' %}" class="px-6 py-3 text-2xl font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign up</a> 
                     <a href="{% url 'core:login' %}" class="px-6 py-3 text-2xl font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Login</a> 
@@ -77,7 +78,6 @@
                     <li><a href="{% url 'core:about' %}" class="text-lg text-teal-500 hover:text-teal-700">About TAK Computers</a></li>
                     <li><a href="{% url 'core:contact' %}" class="text-lg text-teal-500 hover:text-teal-700">Contact Us</a></li> <!-- the % % will bring you to that url we designed -->
                     <li><a href="{%url 'core:privacy' %}" class="text-lg text-teal-500 hover:text-teal-700">Privacy Policy</a></li>
-                    <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Terms of Use</a></li>
                 </ul>
             </div>
 

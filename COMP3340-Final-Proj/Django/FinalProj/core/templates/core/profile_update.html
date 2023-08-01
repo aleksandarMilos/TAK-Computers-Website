@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Update {{user.username}}'s Profile{% endblock %}
+{% load crispy_forms_tags %} 
+{% block content %}
+    <div class="row my-4">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-info font-semibold text-white text-3xl">
+                    Customer Detail Page
+                </div>
+                <div class="row p-3">
+                    <div class="col-md-7">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ user_form|crispy }}
+                            {{ profile_form|crispy }}
+                            <input class="px-4 py-3 text-xl btn btn-info mt-4 bg-blue-500 rounded-xl hover:bg-blue-700 text-white" type="submit" value="Update">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
