@@ -5,6 +5,8 @@ from item.models import Category, Item
 from django.contrib import messages
 
 from .forms import SignupForm, UserUpdateForm, ProfileUpdateForm #this is from the forms.py SignupForm we created
+from .models import Profile
+
 
 # Creating our first view
 def index(request):
@@ -51,6 +53,8 @@ def profile(request):
 
 @login_required
 def profile_update(request):
+    profile, created = Profile.objects.get_or_create(staff=request.user) #fixes and avoids error where profile is not recognized
+
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
