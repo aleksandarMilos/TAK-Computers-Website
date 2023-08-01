@@ -48,8 +48,13 @@
         {% for item in related_items %}
             <div style="background-color: white;">
                 <a href="{% url 'item:detail' item.id %}"> <!-- This is linking to each item when clicked on! -->
+<<<<<<< HEAD
+                    <div style="height: 400px; overflow: hidden;">
+                        <img src="{{ item.image.url }}" class="rounded-t-xl" style="width: 100%; height: 100%; object-fit: contain;">
+=======
                     <div style="height: 500px; overflow: hidden; border-bottom: 1px solid #ccc;">
                         <img src="{{ item.image.url }}" class="rounded-t-xl" style=" margin: auto; width: 100%; height: 100%;; object-fit: contain;">
+>>>>>>> upstream/master
                     </div>
 
                     <div class="p-6 bg-white rounded-b-xl">
