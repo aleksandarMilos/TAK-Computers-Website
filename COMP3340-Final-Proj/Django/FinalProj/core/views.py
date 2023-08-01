@@ -7,14 +7,23 @@ from django.contrib import messages
 from .forms import SignupForm, UserUpdateForm, ProfileUpdateForm #this is from the forms.py SignupForm we created
 from .models import Profile
 
+from django.core.paginator import Paginator
 
 # Creating our first view
 def index(request):
-    items = Item.objects.filter(is_sold=False)[0:9] #Obviously adjust this if we're not using the is_sold thing
+    items = Item.objects.filter(is_sold=False) #Obviously adjust this if we're not using the is_sold thing
     categories = Category.objects.all()
+
+    p = Paginator(items, 6)
+    page = request.GET.get('page')
+    items_list = p.get_page(page)
+
+    numPages = "a" * items_list.paginator.num_pages
+
     return render(request, 'core/index.html', {
         'categories': categories,
-        'items': items,
+        'items': items_list,
+        'numPages': numPages
     })
 
 def contact(request):
