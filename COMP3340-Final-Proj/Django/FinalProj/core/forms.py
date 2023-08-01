@@ -66,3 +66,4 @@ class ProfileUpdateForm(forms.ModelForm):
     phone = forms.IntegerField(widget=forms.NumberInput(attrs={
         'class': 'w-full py-3 px-6 rounded-xl mb-2'
     }))
+    image = forms.ImageField(required=False)
