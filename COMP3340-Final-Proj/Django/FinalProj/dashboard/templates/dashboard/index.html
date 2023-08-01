@@ -7,7 +7,7 @@
 <!-- Available Items Portion of the Front Page -->
 {% block content %}
     <div class="mt-0 px-6 py-12 bg-gray-100 rounded-xl">
-        <h2 class="mb-12 text-3xl text-center font-semibold">{{ user.username }}'s items</h2>
+        <h2 class="mb-12 text-3xl text-center font-semibold">{{ user.username }}'s Listed Items</h2>
 
         <div class="grid grid-cols-3 gap-3"> <!-- This part is for showing the items -->
             {% for item in items %}
