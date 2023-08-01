@@ -6,10 +6,8 @@
 <!-- This block gets automatically rendered in the corresponding base.html part -->
 <!-- Available Items Portion of the Front Page -->
 {% block content %}
-
-
     <div class="mt-0 px-6 py-12 bg-gray-100 rounded-xl">
-        <h2 class="mb-12 text-3xl text-center font-semibold">Available items</h2>
+        <h2 class="mb-12 text-3xl text-center font-semibold">Available Items</h2>
 
         <div class="grid grid-cols-3 gap-3"> <!-- This part is for showing the items -->
             {% for item in items %}
@@ -27,6 +25,28 @@
                 </div>
             {% endfor %}
         </div>
+        <div class="mt-12">
+            <nav aria-label="Page navigation"> <!-- From BootStrap Pagination-->
+                <ul class="pagination justify-content-center">
+                    {% if items.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ items.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+
+                    {% for i in numPages %}
+                        {% if forloop.counter == items.number %}
+                            <li class="page-item active"><a class="page-link" href=?page={{ forloop.counter }}>{{ forloop.counter }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href=?page={{ forloop.counter }}>{{ forloop.counter }}</a></li>
+                        {% endif %}
+                    {% endfor %}                    
+                    {% if items.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ items.next_page_number }}">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ items.paginator.num_pages }}">Last &raquo</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
     </div>
 
     <!-- Computer Categories of Front Page -->
@@ -40,7 +60,7 @@
                         <div class="p-6 bg-white rounded-b-xl">
                             <h2 class="text-2xl">{{ category.name }}</h2>
                             {% if category.items.count == 1 %}
-                                <p class="text-gray-500">{{ category.items.count }} item total</p>
+                                <p class="text-gray-500">{{ category.items.count }} item total</p> <!-- TODO/Future work. Figure out a way to display items that are available. Not just total. Currently shows amount of items including those that is_sold-->
                             {% else %}
                                 <p class="text-gray-500">{{ category.items.count }} items total</p>
                             {% endif %}

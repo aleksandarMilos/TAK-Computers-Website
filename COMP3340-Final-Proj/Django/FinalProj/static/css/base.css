@@ -10,10 +10,3 @@
 .image-container h3 {
     font-size: 1.7em;
 }
-
-.profilepic {
-    width: 150px; 
-    height: 150px; 
-    display: grid;
-    place-items: center;
-}

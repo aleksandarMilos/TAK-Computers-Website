@@ -5,21 +5,36 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import NewItemForm, EditItemForm
 from .models import Category, Item
 
+from django.core.paginator import Paginator
+
 # This view is for the "Browse" page 
 def browse(request):
     query = request.GET.get('query', '') #Backend query part
     category_id = request.GET.get('category', 0) #defaulted to 0, aka no category selected
     categories = Category.objects.all()
     items = Item.objects.filter(is_sold=False) #Once again maybe remove if we don't care about is_sold
+    p = Paginator(items, 9)
+    page = request.GET.get('page')
+    items_list = p.get_page(page)
+    numPages = "a" * items_list.paginator.num_pages
 
     if category_id: # user selected a category
         items = items.filter(category_id=category_id) #then display the items of that specific category
+        p = Paginator(items, 9)
+        page = request.GET.get('page')
+        items_list = p.get_page(page)
+        numPages = "a" * items_list.paginator.num_pages
 
     if query: #Aka the user has filled it out
         items = items.filter(Q(name__icontains=query) | Q(description__icontains=query)) #If name or description contains the queried thing, case insensitive
+        p = Paginator(items, 9)
+        page = request.GET.get('page')
+        items_list = p.get_page(page)
+        numPages = "a" * items_list.paginator.num_pages
 
     return render(request, 'item/browse.html', {
-        'items':items,
+        'items': items_list,
+        'numPages': numPages,
         'query': query,
         'categories': categories,
         'category_id': int(category_id)
