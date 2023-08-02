@@ -98,3 +98,18 @@ body {
     color: black;
 }
 
+.bg-custom {
+    background-color: slategray;
+}
+
+.btn-custom {
+    background-color: slategray;
+    color: whitesmoke;
+}
+
+
+.btn-custom:hover {
+    background-color: black;
+    color: whitesmoke;
+}
+
