@@ -7,7 +7,7 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header bg-info font-semibold text-white text-3xl">
+                <div class="card-header bg-custom font-semibold text-white text-3xl">
                     Customer Detail Page
                 </div>
                 <div class="row p-3">
@@ -16,7 +16,7 @@
                             {% csrf_token %}
                             {{ user_form|crispy }}
                             {{ profile_form|crispy }}
-                            <input class="px-4 py-3 text-xl btn btn-info mt-4 bg-blue-500 rounded-xl hover:bg-blue-700 text-white" type="submit" value="Update">
+                            <input class="px-4 py-3 text-xl btn btn-custom mt-4 bg-gray-500 rounded-xl hover:bg-black text-white" type="submit" value="Update">
                         </form>
                     </div>
                 </div>
