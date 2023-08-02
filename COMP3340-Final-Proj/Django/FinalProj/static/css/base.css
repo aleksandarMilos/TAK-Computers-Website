@@ -10,3 +10,86 @@
 .image-container h3 {
     font-size: 1.7em;
 }
+
+body {
+    background-color: black;
+}
+
+.white-text {
+    color: white;
+  }
+
+  .logo-wrapper {
+    padding: 1px;
+    background-color: slategray;
+    display: inline-block;
+  }
+
+
+
+.btn-main {
+    background-color: whitesmoke;
+    color: black;
+}
+
+
+.btn-main:hover {
+    background-color: slategrey;
+}
+
+.add-new-item:hover,
+.browse:hover {
+    color: slategray;
+}
+
+
+  
+/* General styles for the footer */
+.footer {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Styles for the "About" section */
+.about-section, .menu-section {
+    flex: 1 1 50%;
+    max-width: 75%;
+}
+
+.about-section h3, .menu-section h3 {
+    font-weight: bold;
+}
+
+/* Styles for the menu links */
+.menu-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-section li {
+    margin-bottom: 8px;
+}
+
+.menu-section a {
+    color: whitesmoke;
+}
+
+.menu-section a:hover {
+    color: slategray;
+}
+
+
+.white-box {
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.white-box h3 {
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+
