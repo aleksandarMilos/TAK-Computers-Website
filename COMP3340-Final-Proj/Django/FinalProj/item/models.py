@@ -19,7 +19,7 @@ class Item(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     price = models.FloatField()
-    image = models.ImageField(upload_to='item_images', blank=True, null=True)
+    image = models.ImageField(upload_to='item_images')
     is_sold = models.BooleanField(default=False) #can remove this if we don't want to indicate if things are sold or not
     created_by = models.ForeignKey(User, related_name='items', on_delete=models.CASCADE) # <= if the user is deleted, all the items are deleted as well
     created_at = models.DateTimeField(auto_now_add=True)
